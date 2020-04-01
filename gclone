@@ -1,0 +1,68 @@
+#! /bin/bash
+
+# /!\ It's not a good practice so make sur if you use this
+PSSWD='*github7qva47d5ri6*'
+LOGIN='Clement-Muth'
+REPO=$1
+FILE=~/.netrc
+
+## colors
+ESC="\033["
+C_RED=$ESC"1;31m"
+C_YELLOW=$ESC"1;33m"
+C_BWHITE=$ESC"1;37m"
+C_RST=$ESC"0m"
+
+function usage
+{
+	echo "USAGE"
+    echo     "$0 repository_name"
+	echo
+	echo "DESCRIPTION"
+    echo "    repository_name: enter name of the repo you want to clone"
+	echo
+}
+
+function process
+{
+    if [ ! -f $FILE ]; then
+        echo '[ Creating ] $FILE';
+        touch $FILE
+        echo -e "machine github.com\nlogin $LOGIN\npassword $PSSWD" > $FILE
+    fi
+    git clone https://github.com/$LOGIN/$REPO.git
+}
+
+function error
+{
+	echo -ne "$C_RED[ ERROR ] An error occured$C_RST"
+	echo
+	echo -ne "$C_RED Aborted !$C_RST"
+	echo
+	echo
+	usage
+	exit 84
+}
+
+if test $UID -eq 0; then
+	echo -ne "$C_RED[ ERROR ] Don't execute the script in root$C_RST"
+	echo
+	echo
+	usage
+	exit 84
+fi
+
+if test -z $REPO; then
+	echo -ne "$C_RED[ ERROR ] You must specify a repository$C_RST"
+	echo
+	echo
+	usage
+	exit 84
+fi
+
+if (( $# == 1 )); then
+	process
+	exit 0
+else
+	error
+fi
