@@ -1,6 +1,5 @@
 #! /bin/bash
 
-# /!\ It's not a good practice so make sur if you use this
 PSSWD='password'
 LOGIN='user_name'
 REPO=$1
