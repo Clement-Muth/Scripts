@@ -38,15 +38,15 @@ function process_github
 		echo
         echo -e "machine github.com\nlogin $LOGIN_GITHUB\npassword $PSSWD" > $FILE
     fi
-	return
 }
 
 function process_epi
 {
-	if [ $3 -eq '1' ]; then
-		echo "coucou"
+	if [ $# -eq 3 ]; then
+		git clone git@git.epitech.eu:/$3@epitech.eu/$REPO
+	else
+		git clone git@git.epitech.eu:/$LOGIN_EPI/$REPO
 	fi
-	return
 }
 
 function error
@@ -60,7 +60,7 @@ function error
 	exit 84
 }
 
-if test $UID -eq 0; then
+if [ $UID -eq 0 ]; then
 	echo -ne "$C_RED[ ERROR ] Don't execute the script in root$C_RST"
 	echo
 	echo
@@ -68,7 +68,7 @@ if test $UID -eq 0; then
 	exit 84
 fi
 
-if test -z $REPO; then
+if [ -z $REPO ]; then
 	echo -ne "$C_RED[ ERROR ] You must specify a repository$C_RST"
 	echo
 	echo
@@ -81,11 +81,7 @@ if [ "$2" == "git" ]; then
 	git clone https://github.com/$LOGIN_GITHUB/$REPO.git
 	exit 0
 elif [ "$2" == "epi" ]; then
-	if [ $# -eq 3 ]; then
-		git clone git@git.epitech.eu:/$3@epitech.eu/$REPO
-	else
-		git clone git@git.epitech.eu:/$LOGIN_EPI/$REPO
-	fi
+	process_epi
 	exit 0
 fi
 
