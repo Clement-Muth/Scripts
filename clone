@@ -3,6 +3,7 @@
 LOGIN_EPI='clement.muth@epitech.eu'
 LOGIN_GITHUB='Clement-Muth'
 REPO=$1
+USER_NAME=$3
 FILE=~/.netrc
 
 ## colors
@@ -42,8 +43,8 @@ function process_github
 
 function process_epi
 {
-	if [ $# -eq 3 ]; then
-		git clone git@git.epitech.eu:/$3@epitech.eu/$REPO
+	if [ $# -eq 4 ]; then
+		git clone git@git.epitech.eu:/$USER_NAME@epitech.eu/$REPO
 	else
 		git clone git@git.epitech.eu:/$LOGIN_EPI/$REPO
 	fi
