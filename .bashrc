@@ -95,23 +95,23 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll="ls -l"
+alias la="ls -A"
+alias l="ls -CF"
 
 # some more aliases for command shortcuts
-alias cl='clear'
-alias frm='rm -rf'
-alias fcp='cp -rf'
-alias ffrm='sudo rm -rf'
-alias ffcp='sudo cp -rf'
+alias cl="clear"
+alias frm="rm -rf"
+alias fcp="cp -rf"
+alias ffrm="sudo rm -rf"
+alias ffcp="sudo cp -rf"
 
 # some more aliases for google search
 alias google="$BIN/google-chrome"
-gsearch() { google "https://www.$1"; }
-alias teams='/usr/bin/google-chrome https://teams.microsoft.com/_#/school//?ctx=teamsGrid'
-alias intra='/usr/bin/google-chrome https://intra.epitech.eu/'
-alias my='/usr/bin/google-chrome https://my.epitech.eu/index.html#2019/all/all'
+gsearch() {google "https://www.$1"}
+alias teams="$BIN/google-chrome https://teams.microsoft.com/_#/school//?ctx=teamsGrid"
+alias intra="$BIN/google-chrome https://intra.epitech.eu/"
+alias my="$BIN/google-chrome https://my.epitech.eu/index.html#2019/all/all"
 
 # some aliases for maintenance
 apt="sudo apt"
