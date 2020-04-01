@@ -15,12 +15,12 @@ C_RST=$ESC"0m"
 
 function usage
 {
-	echo "USAGE"
-    echo     "$0 repository_name"
-	echo
-	echo "DESCRIPTION"
-    echo "    repository_name: enter name of the repo you want to clone"
-	echo
+	echo -ne "USAGE\n"
+    echo -ne "\t$0 repository_name [epi/git] [user.name]\n"
+	echo -ne "DESCRIPTION\n"
+    echo -ne "\trepository_name: enter name of the repo you want to clone\n"
+	echo -ne "\t[epi/git] choose to clone a epitech repo or github\n"
+	echo -ne "\t[user.name] if you want to clone another epitech repo\n"
 }
 
 function process_github
@@ -76,11 +76,11 @@ if test -z $REPO; then
 	exit 84
 fi
 
-if [ $2 == 'git' ]; then
+if [ "$2" == "git" ]; then
 	process_github
 	git clone https://github.com/$LOGIN_GITHUB/$REPO.git
 	exit 0
-elif [ $2 == 'epi' ]; then
+elif [ "$2" == "epi" ]; then
 	if [ $# -eq 3 ]; then
 		git clone git@git.epitech.eu:/$3@epitech.eu/$REPO
 	else
