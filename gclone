@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # /!\ It's not a good practice so make sur if you use this
-PSSWD='*github7qva47d5ri6*'
-LOGIN='Clement-Muth'
+PSSWD='password'
+LOGIN='user_name'
 REPO=$1
 FILE=~/.netrc
 
