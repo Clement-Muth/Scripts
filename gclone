@@ -1,13 +1,14 @@
 #! /bin/bash
 
-PSSWD='password'
-LOGIN='user_name'
+LOGIN_EPI='clement.muth@epitech.eu'
+LOGIN_GITHUB='Clement-Muth'
 REPO=$1
 FILE=~/.netrc
 
 ## colors
 ESC="\033["
 C_RED=$ESC"1;31m"
+C_GREEN=$ESC"1;32m"
 C_YELLOW=$ESC"1;33m"
 C_BWHITE=$ESC"1;37m"
 C_RST=$ESC"0m"
@@ -22,14 +23,30 @@ function usage
 	echo
 }
 
-function process
+function process_github
 {
     if [ ! -f $FILE ]; then
-        echo '[ Creating ] $FILE';
+		read -p "Do you want to create a .netrc file ? It allow you to clone without entering your id and password. [Y/n] " create_file
+		case $create_file in
+			n|N) return;;
+			*)
+		esac
+        echo -ne "$C_GREEN[ Creating ][ √ ] $FILE$C_RST\n"
         touch $FILE
-        echo -e "machine github.com\nlogin $LOGIN\npassword $PSSWD" > $FILE
+		read -p "Username: " LOGIN_GITHUB
+		read -s -p "Password: " PSSWD
+		echo
+        echo -e "machine github.com\nlogin $LOGIN_GITHUB\npassword $PSSWD" > $FILE
     fi
-    git clone https://github.com/$LOGIN/$REPO.git
+	return
+}
+
+function process_epi
+{
+	if [ $3 -eq '1' ]; then
+		echo "coucou"
+	fi
+	return
 }
 
 function error
@@ -59,9 +76,18 @@ if test -z $REPO; then
 	exit 84
 fi
 
-if (( $# == 1 )); then
-	process
+if [ $2 == 'git' ]; then
+	process_github
+	git clone https://github.com/$LOGIN_GITHUB/$REPO.git
 	exit 0
-else
-	error
+elif [ $2 == 'epi' ]; then
+	if [ $# -eq 3 ]; then
+		git clone git@git.epitech.eu:/$3@epitech.eu/$REPO
+	else
+		git clone git@git.epitech.eu:/$LOGIN_EPI/$REPO
+	fi
+	exit 0
 fi
+
+error
+exit 84
