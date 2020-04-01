@@ -1,0 +1,89 @@
+#! /bin/bash
+
+LOGIN_EPI='clement.muth@epitech.eu'
+LOGIN_GITHUB='Clement-Muth'
+REPO=$1
+FILE=~/.netrc
+
+## colors
+ESC="\033["
+C_RED=$ESC"1;31m"
+C_GREEN=$ESC"1;32m"
+C_YELLOW=$ESC"1;33m"
+C_BWHITE=$ESC"1;37m"
+C_RST=$ESC"0m"
+
+function usage
+{
+	echo -ne "USAGE\n"
+    echo -ne "\t$0 repository_name [epi/git] [user.name]\n"
+	echo -ne "DESCRIPTION\n"
+    echo -ne "\trepository_name: enter name of the repo you want to clone\n"
+	echo -ne "\t[epi/git] choose to clone a epitech repo or github\n"
+	echo -ne "\t[user.name] if you want to clone another epitech repo\n"
+}
+
+function process_github
+{
+    if [ ! -f $FILE ]; then
+		read -p "Do you want to create a .netrc file ? It allow you to clone without entering your id and password. [Y/n] " create_file
+		case $create_file in
+			n|N) return;;
+			*)
+		esac
+        echo -ne "$C_GREEN[ Creating ][ √ ] $FILE$C_RST\n"
+        touch $FILE
+		read -p "Username: " LOGIN_GITHUB
+		read -s -p "Password: " PSSWD
+		echo
+        echo -e "machine github.com\nlogin $LOGIN_GITHUB\npassword $PSSWD" > $FILE
+    fi
+}
+
+function process_epi
+{
+	if [ $# -eq 3 ]; then
+		git clone git@git.epitech.eu:/$3@epitech.eu/$REPO
+	else
+		git clone git@git.epitech.eu:/$LOGIN_EPI/$REPO
+	fi
+}
+
+function error
+{
+	echo -ne "$C_RED[ ERROR ] An error occured$C_RST"
+	echo
+	echo -ne "$C_RED Aborted !$C_RST"
+	echo
+	echo
+	usage
+	exit 84
+}
+
+if [ $UID -eq 0 ]; then
+	echo -ne "$C_RED[ ERROR ] Don't execute the script in root$C_RST"
+	echo
+	echo
+	usage
+	exit 84
+fi
+
+if [ -z $REPO ]; then
+	echo -ne "$C_RED[ ERROR ] You must specify a repository$C_RST"
+	echo
+	echo
+	usage
+	exit 84
+fi
+
+if [ "$2" == "git" ]; then
+	process_github
+	git clone https://github.com/$LOGIN_GITHUB/$REPO.git
+	exit 0
+elif [ "$2" == "epi" ]; then
+	process_epi
+	exit 0
+fi
+
+error
+exit 84
