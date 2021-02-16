@@ -42,8 +42,8 @@ Add the following to the end of ~/.zshrc:
 
 ## Config
 
+Check my config file [config file](https://github.com/Clement-Muth/Scripts/blob/master/starship.toml)
+
  ```bash
  $ mkdir -p ~/.config && touch ~/.config/starship.toml
 ```
-
-[config file](https://github.com/Clement-Muth/Scripts/blob/master/starship.toml)
