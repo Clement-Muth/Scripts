@@ -39,3 +39,11 @@ Add the following to the end of ~/.zshrc:
 
   $ eval "$(starship init zsh)"
 ```
+
+## Config
+
+ ```bash
+ $ mkdir -p ~/.config && touch ~/.config/starship.toml
+```
+
+[config file]()
