@@ -1,0 +1,169 @@
+# N'écrivez pas une nouvelle ligne au début de la console
+add_newline = false
+
+# Remplacez le symbole "❯" dans la console avec "➜"
+[character]             # Le nom du module que nous configurons est "character"
+success_symbol = "[➜](bold green)"    # Le segment "success_symbol" est mis comme "➜" avec la couleur "bold green"
+
+# Désactivez le module package, le masquant complètement dans la console
+[package]
+disabled = true
+
+[aws]
+format = 'on [$symbol$profile(\($region\))]($style) '
+style = "bold blue"
+symbol = "🅰 "
+[aws.region_aliases]
+ap-southeast-2 = "au"
+us-east-1 = "va"
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "⚡️"
+discharging_symbol = "💀"
+
+[[battery.display]]
+threshold = 10
+style = "bold red"
+
+[[battery.display]]
+threshold = 50
+style = "bold orange"
+
+[[battery.display]]
+threshold = 80
+style = "bold green"
+
+[cmd_duration]
+min_time = 500
+format = "underwent [$duration](bold yellow)"
+
+[crystal]
+format = "via [✨ $version](bold blue) "
+
+[dart]
+format = "via [🔰 $version](bold red) "
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[dotnet]
+symbol = "🥅 "
+style = "green"
+heuristic = false
+
+[elixir]
+symbol = "🔮 "
+
+[elm]
+format = "via [ $version](cyan bold) "
+
+[erlang]
+format = "via [e $version](bold red) "
+
+[gcloud]
+format = 'on [$symbol$account(\($project\))]($style) '
+
+[git_branch]
+symbol = "🌱 "
+truncation_length = 4
+truncation_symbol = ""
+
+[git_commit]
+commit_hash_length = 4
+tag_symbol = "🔖 "
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
+
+[golang]
+format = "via [🏎💨 $version](bold cyan) "
+
+[helm]
+format = "via [⎈ $version](bold white) "
+
+[java]
+symbol = "🌟 "
+
+[jobs]
+symbol = "+ "
+threshold = 4
+
+[julia]
+symbol = "∴ "
+
+[kotlin]
+symbol = "🅺 "
+
+[kubernetes]
+format = 'on [⛵ $context \($namespace\)](dimmed green) '
+disabled = false
+[kubernetes.context_aliases]
+"dev.local.cluster.k8s" = "dev"
+
+[line_break]
+disabled = true
+
+[lua]
+format = "via [🌕 $version](bold blue) "
+
+[hg_branch]
+format = "on [🌱 $branch](bold purple)"
+truncation_length = 4
+truncation_symbol = ""
+
+[nim]
+style = "yellow"
+symbol = "🎣 "
+
+[nix_shell]
+disabled = true
+impure_msg = "[impure shell](bold red)"
+pure_msg = "[pure shell](bold green)"
+format = 'via [☃️ $state( \($name\))](bold blue) '
+
+[nodejs]
+format = "via [🤖 $version](bold green) "
+
+[ocaml]
+format = "via [🐪 $version]($style) "
+
+[openstack]
+format = "on [$symbol$cloud(\\($project\\))]($style) "
+style = "bold yellow"
+symbol = "☁️ "
+
+[perl]
+format = "via [🦪 $version]($style) "
+
+[php]
+format = "via [🔹 $version](147 bold) "
+
+[purescript]
+format = "via [$symbol$version](bold white)"
+
+[python]
+symbol = "👾 "
+pyenv_version_name = true
+
+[ruby]
+symbol = "🔺 "
+
+[rust]
+format = "via [⚙️ $version](red bold)"
+
+[singularity]
+format = '[📦 \[$env\]]($style) '
