@@ -28,3 +28,14 @@ antigen theme denysdovhan/spaceship-prompt
 # Tell Antigen that you're done
 antigen apply
 ```
+
+# Install Startship on Ubuntu
+
+```bash
+$ curl -fsSL https://starship.rs/install.sh | bash
+
+Zsh
+Add the following to the end of ~/.zshrc:
+
+  $ eval "$(starship init zsh)"
+```
