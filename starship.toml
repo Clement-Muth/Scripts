@@ -1,9 +1,9 @@
 # N'écrivez pas une nouvelle ligne au début de la console
 add_newline = false
 
-# Remplacez le symbole "❯" dans la console avec "➜"
-[character]             # Le nom du module que nous configurons est "character"
-success_symbol = "[➜](bold green)"    # Le segment "success_symbol" est mis comme "➜" avec la couleur "bold green"
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[✗](bold red) "
 
 # Désactivez le module package, le masquant complètement dans la console
 [package]
@@ -115,7 +115,7 @@ disabled = false
 "dev.local.cluster.k8s" = "dev"
 
 [line_break]
-disabled = true
+disabled = false
 
 [lua]
 format = "via [🌕 $version](bold blue) "
