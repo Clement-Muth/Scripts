@@ -46,4 +46,4 @@ Add the following to the end of ~/.zshrc:
  $ mkdir -p ~/.config && touch ~/.config/starship.toml
 ```
 
-[config file]()
+[config file](https://github.com/Clement-Muth/Scripts/blob/master/starship.toml)
