@@ -7,6 +7,8 @@ export ZSH="/home/cmuth/.oh-my-zsh"
 
 plugins=(zsh-autosuggestions)
 
+eval "$(starship init zsh)"
+
 # Load Antigen
 source "/home/cmuth/.oh-my-zsh/custom/plugins/antigen.zsh"
 
